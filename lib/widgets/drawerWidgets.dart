@@ -1,5 +1,7 @@
 import 'package:bookshop/widgets/myProfile.dart';
+import 'package:bookshop/widgets/reviewCart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class drawerWidgets extends StatelessWidget {
   Widget listTile({
@@ -80,6 +82,14 @@ class drawerWidgets extends StatelessWidget {
                 ListTile(
                   leading: Icon(Icons.notifications_outlined),
                   title: Text('Notification'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.shop_outlined),
+                  title: Text('Review Cart'),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => reviewCart()));
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.format_quote_outlined),

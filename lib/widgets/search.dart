@@ -1,3 +1,4 @@
+import 'package:bookshop/widgets/searchItem.dart';
 import 'package:flutter/material.dart';
 
 class searchWidget extends StatelessWidget {
@@ -39,11 +40,18 @@ class searchWidget extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        searchWidget(),
-        searchWidget(),
-        searchWidget(),
-        searchWidget(),
-        searchWidget(),
+        searchItem(
+          isbool: false,
+        ),
+        searchItem(
+          isbool: false,
+        ),
+        searchItem(
+          isbool: false,
+        ),
+        searchItem(
+          isbool: false,
+        ),
       ]),
     );
   }

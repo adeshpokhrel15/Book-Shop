@@ -1,6 +1,8 @@
 import 'package:bookshop/screens/authScreens.dart';
+import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/screens/mainScreen.dart';
 import 'package:bookshop/screens/statusCheck.dart';
+import 'package:bookshop/widgets/drawerWidgets.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +18,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: mainScreen(),
+      home: statusCheck(),
+      // statusCheck(),
       debugShowCheckedModeBanner: false,
     );
   }

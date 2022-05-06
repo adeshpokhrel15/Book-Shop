@@ -4,7 +4,12 @@ class reviewCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      appBar: AppBar(
+        title: Text(
+          "Review Cart",
+          style: TextStyle(color: Colors.red, fontSize: 18),
+        ),
+      ),
     );
   }
 }

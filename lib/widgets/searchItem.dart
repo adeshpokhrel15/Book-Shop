@@ -13,6 +13,15 @@ class searchItem extends StatelessWidget {
           ),
         ],
       ),
+      body: ListView(children: [
+        ListTile(
+          leading: Icon(Icons.search),
+          title: Text('Search'),
+        ),
+        Divider(
+          height: 1,
+        ),
+      ]),
     );
   }
 }

@@ -21,6 +21,9 @@ class mainScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        SizedBox(
+          height: 10,
+        ),
         Expanded(flex: 1, child: Image.asset('assets/$image')),
         Expanded(
             child: Container(
@@ -34,7 +37,7 @@ class mainScreen extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
-                Text('$price',
+                Text('Rs. $price',
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -45,7 +48,7 @@ class mainScreen extends StatelessWidget {
                       height: 30,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: Colors.yellow,
+                        color: Colors.white,
                         border: Border.all(
                           color: Colors.grey,
                         ),
@@ -77,7 +80,7 @@ class mainScreen extends StatelessWidget {
                     height: 30,
                     width: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                       border: Border.all(
                         color: Colors.grey,
                       ),
@@ -98,7 +101,7 @@ class mainScreen extends StatelessWidget {
                           ),
                         ),
                         Icon(
-                          Icons.remove,
+                          Icons.add,
                           size: 15,
                           color: Colors.red,
                         ),

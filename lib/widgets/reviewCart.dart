@@ -8,7 +8,7 @@ class reviewCart extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "Review Cart",
-            style: TextStyle(color: Colors.red, fontSize: 18),
+            style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
         body: ListView(
@@ -18,6 +18,9 @@ class reviewCart extends StatelessWidget {
             ),
             searchItem(
               isbool: true,
+            ),
+            SizedBox(
+              height: 10,
             ),
             searchItem(
               isbool: true,
@@ -38,14 +41,14 @@ class reviewCart extends StatelessWidget {
             subtitle: Text(
               "120",
               style: TextStyle(
-                color: Colors.green[900],
+                color: Colors.black,
               ),
             ),
             trailing: Container(
                 width: 160,
                 child: MaterialButton(
                   child: Text("Submit"),
-                  color: Colors.grey,
+                  color: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                       30,

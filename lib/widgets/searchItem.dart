@@ -8,7 +8,7 @@ class searchItem extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: Row(
             children: [
               Expanded(
@@ -28,14 +28,14 @@ class searchItem extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          'proudctName',
+                          'One Indian Girl',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 16),
                         ),
                         Text(
-                          "productPrice",
+                          "Rs. 10",
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
@@ -54,7 +54,7 @@ class searchItem extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "productQuantity",
+                                    "1 book",
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 14,
@@ -76,66 +76,70 @@ class searchItem extends StatelessWidget {
               )),
               Expanded(
                   child: Container(
-                height: 100,
+                height: 90,
                 padding: isbool == false
-                    ? EdgeInsets.symmetric(horizontal: 10, vertical: 30)
+                    ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
                     : EdgeInsets.only(left: 15, right: 15),
                 child: isbool == false
                     ? Container(
                         height: 24,
-                        width: 24,
+                        width: 50,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                               Icon(
-                                Icons.add_circle,
-                                color: Colors.grey,
+                                Icons.add,
+                                color: Colors.red,
                                 size: 19,
                               ),
                               Text(
                                 'Add',
-                                style: TextStyle(color: Colors.red),
+                                style: TextStyle(color: Colors.pink),
                               )
                             ])),
                       )
-                    : Column(
-                        children: [
-                          Icon(
-                            Icons.delete,
-                            color: Colors.red,
-                            size: 20,
-                          ),
-                          SizedBox(height: 10),
-                          Container(
-                            height: 24,
-                            width: 24,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(30),
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 13,
+                        ),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                              size: 30,
                             ),
-                            child: Center(
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                  Icon(
-                                    Icons.add_circle,
-                                    color: Colors.grey,
-                                    size: 19,
-                                  ),
-                                  Text(
-                                    'Add',
-                                    style: TextStyle(color: Colors.red),
-                                  )
-                                ])),
-                          )
-                        ],
+                            SizedBox(height: 10),
+                            Container(
+                              height: 28,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                    Icon(
+                                      Icons.add,
+                                      color: Colors.red,
+                                      size: 19,
+                                    ),
+                                    Text(
+                                      'Add',
+                                      style: TextStyle(color: Colors.pink),
+                                    )
+                                  ])),
+                            )
+                          ],
+                        ),
                       ),
               )),
             ],

@@ -19,7 +19,11 @@ class searchWidget extends StatelessWidget {
       ),
       body: ListView(children: [
         ListTile(
-          title: Text("Items"),
+          title: Text(
+            "Items",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 30, color: Colors.pink),
+          ),
         ),
         Container(
           height: 52,
@@ -32,13 +36,13 @@ class searchWidget extends StatelessWidget {
               ),
               fillColor: Colors.blueGrey,
               filled: true,
-              hintText: "Search Book",
+              hintText: "Search Book in the Store",
               suffixIcon: Icon(Icons.search),
             ),
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 30,
         ),
         searchItem(
           isbool: false,

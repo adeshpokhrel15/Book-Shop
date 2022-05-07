@@ -95,6 +95,10 @@ class drawerWidgets extends StatelessWidget {
                   leading: Icon(Icons.format_quote_outlined),
                   title: Text('FAQ'),
                 ),
+                ListTile(
+                  leading: Icon(Icons.exit_to_app_outlined),
+                  title: Text("Log Out"),
+                ),
                 SizedBox(
                   height: 80,
                 ),

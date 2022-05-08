@@ -14,7 +14,9 @@ class searchItem extends StatelessWidget {
               Expanded(
                   child: Container(
                 height: 100,
-                child: Center(child: Image.asset('assets/book1.jpg')),
+                child: Center(
+                    child: Image.network(
+                        'https://heavenlybells.org/img/read-nepali-novel-online-free.jpg')),
               )),
               Expanded(
                   child: Container(
@@ -28,7 +30,7 @@ class searchItem extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          'One Indian Girl',
+                          'Summer Love',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

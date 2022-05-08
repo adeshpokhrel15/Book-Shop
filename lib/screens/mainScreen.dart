@@ -1,4 +1,5 @@
 import 'package:bookshop/providers/authProvider.dart';
+import 'package:bookshop/providers/productProvider.dart';
 import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/widgets/drawerWidgets.dart';
 import 'package:bookshop/widgets/reviewCart.dart';
@@ -7,7 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class mainScreen extends StatelessWidget {
+class mainScreen extends StatefulWidget {
+  @override
+  State<mainScreen> createState() => _mainScreenState();
+}
+
+class _mainScreenState extends State<mainScreen> {
   Widget singleBook(
       {required String image, required String name, required double price}) {
     return Container(

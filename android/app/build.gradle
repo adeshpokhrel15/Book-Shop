@@ -48,6 +48,7 @@ android {
         applicationId "com.example.bookshop"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

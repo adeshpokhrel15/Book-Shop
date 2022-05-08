@@ -2,10 +2,10 @@ import 'package:bookshop/models/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final productProvider = StreamProvider((ref) => ProductProvider().getUser());
+final userProvider = StreamProvider((ref) => UserProvider().getUser());
 
-class ProductProvider {
-  CollectionReference dbUser = FirebaseFirestore.instance.collection('books');
+class UserProvider {
+  CollectionReference dbUser = FirebaseFirestore.instance.collection('users');
 
   Stream<List<User>> getUser() {
     final data = dbUser.snapshots().map((event) => _getFromSnap(event));

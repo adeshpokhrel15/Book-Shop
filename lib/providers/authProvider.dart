@@ -15,11 +15,12 @@ class LoginSignUpProvider {
       required String password,
       required String userName}) async {
     try {
-      await FirebaseAuth.instance
+      final response = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       dBusers.add({
-        'username': userName,
+        'userName': userName,
         'email': email,
+        'userId': response.user!.uid,
       });
 
       return 'success';

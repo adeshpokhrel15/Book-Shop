@@ -1,12 +1,9 @@
 import 'package:bookshop/providers/authProvider.dart';
-import 'package:bookshop/providers/loginProvider.dart';
 import 'package:bookshop/providers/userProvider.dart';
 import 'package:bookshop/widgets/myProfile.dart';
 import 'package:bookshop/widgets/reviewCart.dart';
-import 'package:bookshop/widgets/userShow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 
 class drawerWidgets extends StatelessWidget {
   Widget listTile({
@@ -32,8 +29,8 @@ class drawerWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
-      final userData = ref.watch(userProvider);
-      final loginData = ref.watch(authProvider);
+      final loginData = ref.watch(logSignProvider);
+      final userData = ref.watch(userStream);
 
       return Scaffold(
           body: Container(
@@ -61,22 +58,34 @@ class drawerWidgets extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              //   Text('Adesh'),
-                              //   Text(
-                              //     'Adesh@',
-                              //     overflow: TextOverflow.ellipsis,
-
-                              //   ),
+                              userData.when(
+                                  data: (data) {
+                                    return Column(
+                                      children: [
+                                        Text(
+                                          data.userName,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18),
+                                        ),
+                                        Text(data.email,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18)),
+                                      ],
+                                    );
+                                  },
+                                  error: (err, stack) => Text('$err'),
+                                  loading: () => Center(
+                                        child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
+                                      )),
                             ],
                           )
                         ],
                       ),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      UserPage(userData),
-                    ],
                   ),
                   ListTile(
                     leading: Icon(Icons.person_outlined),

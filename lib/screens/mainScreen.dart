@@ -336,38 +336,48 @@ class _mainScreenState extends State<mainScreen> {
                     ),
                   ],
                 )),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => detailProduct(
-                        productImage: 'book1.jpg',
-                        productName: 'One Indian Girl',
-                        productPrice: 10,
+            Consumer(builder: (context, ref, child) {
+              final product = ref.watch(imageStream);
+
+              product.when(
+                  data: (data) {},
+                  error: (err, stack) => Text('$err'),
+                  loading: () => CircularProgressIndicator());
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => detailProduct(
+                          productImage: 'book1.jpg',
+                          productName: 'One Indian Girl',
+                          productPrice: 10,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: Row(
-                  children: [
-                    singleBook(
-                        image: 'book1.jpg',
-                        name: 'One Indian Girl',
-                        price: 10.00),
-                    singleBook(
-                        image: 'book2.jpg', name: 'No Way Out', price: 20.00),
-                    singleBook(
-                        image: 'book3.jpg',
-                        name: 'Eyes Wide Open',
-                        price: 30.00),
-                    singleBook(
-                        image: 'book4.jpg', name: 'Isaacs Storm', price: 40.00),
-                  ],
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      singleBook(
+                          image: 'book1.jpg',
+                          name: 'One Indian Girl',
+                          price: 10.00),
+                      singleBook(
+                          image: 'book2.jpg', name: 'No Way Out', price: 20.00),
+                      singleBook(
+                          image: 'book3.jpg',
+                          name: 'Eyes Wide Open',
+                          price: 30.00),
+                      singleBook(
+                          image: 'book4.jpg',
+                          name: 'Isaacs Storm',
+                          price: 40.00),
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: Row(

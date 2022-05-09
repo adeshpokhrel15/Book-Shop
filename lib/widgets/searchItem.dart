@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 
-class searchItem extends StatelessWidget {
+class searchItem extends StatefulWidget {
   bool isbool = false;
-  searchItem({required this.isbool});
+  // int productPrice =0;
+
+  searchItem({required this.isbool}); // this.productPrice);
+
+  @override
+  State<searchItem> createState() => _searchItemState();
+}
+
+class _searchItemState extends State<searchItem> {
+  late int count = 1;
+
+  late int price = 10;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +34,7 @@ class searchItem extends StatelessWidget {
                   child: Container(
                 height: 100,
                 child: Column(
-                  mainAxisAlignment: isbool == false
+                  mainAxisAlignment: widget.isbool == false
                       ? MainAxisAlignment.spaceAround
                       : MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,13 +49,13 @@ class searchItem extends StatelessWidget {
                               fontSize: 16),
                         ),
                         Text(
-                          "Rs. 10",
+                          "Rs. " + "${price * count}",
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    isbool == false
+                    widget.isbool == false
                         ? Container(
                             margin: EdgeInsets.only(right: 15),
                             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -72,58 +84,28 @@ class searchItem extends StatelessWidget {
                                 )
                               ],
                             ))
-                        : Text('1 book')
+                        : Text('$count book') //unit of product
                   ],
                 ),
               )),
               Expanded(
-                  child: Container(
-                height: 90,
-                padding: isbool == false
-                    ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
-                    : EdgeInsets.only(left: 15, right: 15),
-                child: isbool == false
-                    ? Container(
-                        height: 24,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                              Icon(
-                                Icons.add,
-                                color: Colors.red,
-                                size: 19,
-                              ),
-                              Text(
-                                'Add',
-                                style: TextStyle(color: Colors.pink),
-                              )
-                            ])),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 13,
-                        ),
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                              size: 30,
+                child: Container(
+                  height: 90,
+                  padding: widget.isbool == false
+                      ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
+                      : EdgeInsets.only(left: 15, right: 15),
+                  child: widget.isbool == false
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Container(
+                            height: 24,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            SizedBox(height: 10),
-                            Container(
-                              height: 28,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
+                            child: InkWell(
+                              onTap: () {},
                               child: Center(
                                   child: Row(
                                       mainAxisAlignment:
@@ -139,15 +121,82 @@ class searchItem extends StatelessWidget {
                                       style: TextStyle(color: Colors.pink),
                                     )
                                   ])),
-                            )
-                          ],
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 13,
+                          ),
+                          child: Column(children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.delete, //
+                                color: Colors.red,
+                                size: 30,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 28,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        if (count == 1) {
+                                          Text('Maximun Reach');
+                                        } else {
+                                          setState(() {
+                                            count--;
+                                          });
+                                        }
+                                      },
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: Colors.red,
+                                        size: 20,
+                                      ),
+                                    ),
+                                    Text(
+                                      "$count",
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        if (count < 10) {
+                                          setState(() {
+                                            count++;
+                                          });
+                                        }
+                                      },
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.red,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
                         ),
-                      ),
-              )),
+                ),
+              )
             ],
           ),
         ),
-        isbool == false
+        widget.isbool == false
             ? Container()
             : Divider(
                 height: 1,

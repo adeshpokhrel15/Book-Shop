@@ -1,0 +1,10 @@
+  Consumer(builder: (context, ref, child) {
+              final product = ref.watch(postProvider);
+
+              product.when(
+                  data: (data) {
+                  return Text(data[0].productImage);]);
+                  },
+                  error: (err, stack) => Text('$err'),
+                  loading: () => CircularProgressIndicator());
+              return

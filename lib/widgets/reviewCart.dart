@@ -2,6 +2,8 @@ import 'package:bookshop/widgets/searchItem.dart';
 import 'package:flutter/material.dart';
 
 class reviewCart extends StatelessWidget {
+  late int count = 0;
+  late int price = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,7 @@ class reviewCart extends StatelessWidget {
         bottomNavigationBar: ListTile(
             title: Text("Total Aount"),
             subtitle: Text(
-              "120",
+              "Rs. " + "${price * count}",
               style: TextStyle(
                 color: Colors.black,
               ),

@@ -231,236 +231,296 @@ class _mainScreenState extends State<mainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      drawer: drawerWidgets(),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          'Home',
-          style: TextStyle(
-              color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          CircleAvatar(
-            radius: 15,
-            backgroundColor: Color(0xffd6d382),
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => searchWidget()));
-              },
-              icon: Icon(
-                Icons.search,
-                size: 17,
-                color: Colors.black,
-              ),
+    return Consumer(builder: (context, ref, child) {
+      final product = ref.watch(postProvider);
+
+      return Scaffold(
+          backgroundColor: Colors.grey,
+          drawer: drawerWidgets(),
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            title: Text(
+              'Home',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => reviewCart(),
-                  ),
-                );
-              },
-              child: CircleAvatar(
-                backgroundColor: Color(0xffd6d382),
+            actions: [
+              CircleAvatar(
                 radius: 15,
-                child: Icon(Icons.shop, size: 17, color: Colors.black),
-              ),
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        child: ListView(
-          children: [
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage('assets/book.jpg')),
-              ),
-              child: Row(children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(right: 130, bottom: 10),
-                          child: Container(
-                            height: 50,
-                            width: 100,
-                          ),
-                        ),
-                        Text(
-                          'There is no friend as loyal as a book',
-                          style: TextStyle(
-                              fontSize: 28,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+                backgroundColor: Color(0xffd6d382),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => searchWidget()));
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    size: 17,
+                    color: Colors.black,
                   ),
                 ),
-              ]),
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Popular',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                    Text(
-                      'See All',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                  ],
-                )),
-            Consumer(builder: (context, ref, child) {
-              final product = ref.watch(imageStream);
-
-              product.when(
-                  data: (data) {},
-                  error: (err, stack) => Text('$err'),
-                  loading: () => CircularProgressIndicator());
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: InkWell(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => detailProduct(
-                          productImage: 'book1.jpg',
-                          productName: 'One Indian Girl',
-                          productPrice: 10,
-                        ),
+                        builder: (context) => reviewCart(),
                       ),
                     );
                   },
-                  child: Row(
-                    children: [
-                      singleBook(
-                          image: 'book1.jpg',
-                          name: 'One Indian Girl',
-                          price: 10.00),
-                      singleBook(
-                          image: 'book2.jpg', name: 'No Way Out', price: 20.00),
-                      singleBook(
-                          image: 'book3.jpg',
-                          name: 'Eyes Wide Open',
-                          price: 30.00),
-                      singleBook(
-                          image: 'book4.jpg',
-                          name: 'Isaacs Storm',
-                          price: 40.00),
-                    ],
+                  child: CircleAvatar(
+                    backgroundColor: Color(0xffd6d382),
+                    radius: 15,
+                    child: Icon(Icons.shop, size: 17, color: Colors.black),
                   ),
                 ),
-              );
-            }),
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Most Popular',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                    Text(
-                      'See All',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                  ],
-                )),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singleBook(
-                      image: 'book9.jpg', name: 'Palpasa Cafe', price: 50.00),
-                  singleBook(
-                      image: 'book10.jpg', name: 'Cuckoo Hill', price: 60.00),
-                  singleBook(
-                      image: 'book11.jpg',
-                      name: 'Sound Pleasure',
-                      price: 70.00),
-                  singleBook(
-                      image: 'book8.jpg', name: 'Galileo Finger', price: 80.00),
-                  singleBook(
-                      image: 'book12.jpg', name: 'The Forest', price: 90.00),
-                ],
               ),
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Nepali Popular',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
+            ],
+          ),
+          body: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: ListView(children: [
+                Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/book.jpg')),
+                  ),
+                  child: Row(children: [
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 130, bottom: 10),
+                              child: Container(
+                                height: 50,
+                                width: 100,
+                              ),
+                            ),
+                            Text(
+                              'There is no friend as loyal as a book',
+                              style: TextStyle(
+                                  fontSize: 28,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      'See All',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                  ],
-                )),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singleBook(
-                      image: 'book9.jpg', name: 'Palpasa Cafe', price: 50.00),
-                  singleBook(
-                      image: 'book10.jpg', name: 'Cuckoo Hill', price: 60.00),
-                  singleBook(
-                      image: 'book11.jpg',
-                      name: 'Sound Pleasure',
-                      price: 70.00),
-                  singleBook(
-                      image: 'book8.jpg', name: 'Galileo Finger', price: 80.00),
-                  singleBook(
-                      image: 'book12.jpg', name: 'The Forest', price: 90.00),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+                  ]),
+                ),
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                        Text(
+                          'See All',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                      ],
+                    )),
+                Column(children: [
+                  product.when(
+                      data: (data) {
+                        return Container(
+                          margin: EdgeInsets.only(top: 10),
+                          height: 150,
+                          child: ListView.builder(
+                              itemCount: data.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                final dat = data[index];
+
+                                Text(dat.productName);
+                                return Container(
+                                  child: Text(data[0].productName),
+                                );
+                              }),
+                        );
+                      },
+                      error: (err, stack) => Text('$err'),
+                      loading: () => Container()),
+
+                  // Column(
+
+                  // children:
+                  // product.when(data: (data) {
+
+                  //   return Container(
+                  //               margin: EdgeInsets.only(top: 10),
+                  //               height: 150,
+                  //               child: ListView.builder(
+                  //                 itemCount: data.length,
+                  //                   scrollDirection: Axis.horizontal,
+                  //                   itemBuilder: (context, index) {
+                  //                     return Text(data[0].productImage);
+
+                  // },
+
+                  //           error: (err, stack) => Text('$err'),
+                  //           loading: () => Container()
+                  //       ),
+
+                  //         SingleChildScrollView(
+                  //           scrollDirection: Axis.horizontal,
+                  //           child: InkWell(
+                  //             onTap: () {
+                  //               Navigator.of(context).push(
+                  //                 MaterialPageRoute(
+                  //                   builder: (context) => detailProduct(
+                  //                     productImage: 'book1.jpg',
+                  //                     productName: 'One Indian Girl',
+                  //                     productPrice: 10,
+                  //                   ),
+                  //                 ),
+                  //               );
+                  //             },
+                  //             child: Row(
+                  //               children: [
+                  //                 singleBook(
+                  //                     image: 'book1.jpg',
+                  //                     name: 'One Indian Girl',
+                  //                     price: 10.00),
+                  //                 singleBook(
+                  //                     image: 'book2.jpg',
+                  //                     name: 'No Way Out',
+                  //                     price: 20.00),
+                  //                 singleBook(
+                  //                     image: 'book3.jpg',
+                  //                     name: 'Eyes Wide Open',
+                  //                     price: 30.00),
+                  //                 singleBook(
+                  //                     image: 'book4.jpg',
+                  //                     name: 'Isaacs Storm',
+                  //                     price: 40.00),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Padding(
+                  //             padding: const EdgeInsets.symmetric(vertical: 8),
+                  //             child: Row(
+                  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //               children: [
+                  //                 Text(
+                  //                   'Most Popular',
+                  //                   style: TextStyle(
+                  //                       fontSize: 20,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.red),
+                  //                 ),
+                  //                 Text(
+                  //                   'See All',
+                  //                   style: TextStyle(
+                  //                       fontSize: 20,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.red),
+                  //                 ),
+                  //               ],
+                  //             )),
+                  //         SingleChildScrollView(
+                  //           scrollDirection: Axis.horizontal,
+                  //           child: Row(
+                  //             children: [
+                  //               singleBook(
+                  //                   image: 'book9.jpg',
+                  //                   name: 'Palpasa Cafe',
+                  //                   price: 50.00),
+                  //               singleBook(
+                  //                   image: 'book10.jpg',
+                  //                   name: 'Cuckoo Hill',
+                  //                   price: 60.00),
+                  //               singleBook(
+                  //                   image: 'book11.jpg',
+                  //                   name: 'Sound Pleasure',
+                  //                   price: 70.00),
+                  //               singleBook(
+                  //                   image: 'book8.jpg',
+                  //                   name: 'Galileo Finger',
+                  //                   price: 80.00),
+                  //               singleBook(
+                  //                   image: 'book12.jpg',
+                  //                   name: 'The Forest',
+                  //                   price: 90.00),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         Padding(
+                  //             padding: const EdgeInsets.symmetric(vertical: 8),
+                  //             child: Row(
+                  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //               children: [
+                  //                 Text(
+                  //                   'Nepali Popular',
+                  //                   style: TextStyle(
+                  //                       fontSize: 20,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.red),
+                  //                 ),
+                  //                 Text(
+                  //                   'See All',
+                  //                   style: TextStyle(
+                  //                       fontSize: 20,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.red),
+                  //                 ),
+                  //               ],
+                  //             )),
+                  //         SingleChildScrollView(
+                  //           scrollDirection: Axis.horizontal,
+                  //           child: Row(
+                  //             children: [
+                  //               singleBook(
+                  //                   image: 'book9.jpg',
+                  //                   name: 'Palpasa Cafe',
+                  //                   price: 50.00),
+                  //               singleBook(
+                  //                   image: 'book10.jpg',
+                  //                   name: 'Cuckoo Hill',
+                  //                   price: 60.00),
+                  //               singleBook(
+                  //                   image: 'book11.jpg',
+                  //                   name: 'Sound Pleasure',
+                  //                   price: 70.00),
+                  //               singleBook(
+                  //                   image: 'book8.jpg',
+                  //                   name: 'Galileo Finger',
+                  //                   price: 80.00),
+                  //               singleBook(
+                  //                   image: 'book12.jpg',
+                  //                   name: 'The Forest',
+                  //                   price: 90.00),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ]),
+                  // ),
+                ])
+              ])));
+    });
   }
 }

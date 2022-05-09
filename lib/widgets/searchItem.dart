@@ -49,7 +49,7 @@ class _searchItemState extends State<searchItem> {
                               fontSize: 16),
                         ),
                         Text(
-                          "Rs. " + "${price * count}",
+                          "Rs. " + "${10 * count}",
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
@@ -68,7 +68,7 @@ class _searchItemState extends State<searchItem> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "1 book",
+                                    "$count book",
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 14,

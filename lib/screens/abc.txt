@@ -143,3 +143,93 @@
                       Container(
                                 child: Image.network(data[0].productImage),
                               );
+
+
+
+  // details.when(
+                    //   data: (data) {
+                    //     // return Container(
+                    //     child: ListTile(
+                    //   title: Text(data[0].productName),
+                    //   subtitle: Text("10"),
+                    // ));
+                    // Container(
+                    //     height: 250,
+                    //     padding: EdgeInsets.all(40),
+                    //     child: Image.network(
+                    //       data[0].productImage,
+                    //       fit: BoxFit.cover,
+                    //     ));
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: 20),
+                    //   width: double.infinity,
+                    //   child: Text(
+                    //     "Available Options",
+                    //     textAlign: TextAlign.start,
+                    //     style: TextStyle(
+                    //       color: Colors.black,
+                    //       fontWeight: FontWeight.w600,
+                    //     ),
+                    //   ),
+                    // );
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(
+                    //     horizontal: 10,
+                    //   ),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Row(
+                    //         children: [
+                    //           CircleAvatar(
+                    //             radius: 3,
+                    //             backgroundColor: Colors.green[700],
+                    //           ),
+                    //           Radio(
+                    //             value: SinginCharacter.fill,
+                    //             groupValue: _character,
+                    //             activeColor: Colors.green[700],
+                    //             onChanged: (value) {
+                    //               setState(() {
+                    //                 //    _character = value;
+                    //               });
+                    //             },
+                    //           ),
+                    //         ],
+                    //       ),
+                    //       Text("100"),
+                    //       Container(
+                    //         padding: EdgeInsets.symmetric(
+                    //           horizontal: 30,
+                    //           vertical: 10,
+                    //         ),
+                    //         decoration: BoxDecoration(
+                    //           border: Border.all(
+                    //             color: Colors.grey,
+                    //           ),
+                    //           borderRadius: BorderRadius.circular(
+                    //             30,
+                    //           ),
+                    //         ),
+                    //         child: Row(
+                    //           mainAxisAlignment: MainAxisAlignment.center,
+                    //           children: [
+                    //             Icon(
+                    //               Icons.add,
+                    //               size: 17,
+                    //               color: Colors.red,
+                    //             ),
+                    //             Text(
+                    //               "ADD",
+                    //               style: TextStyle(color: Colors.red),
+                    //             )
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // );
+                    // },
+                    // error: (err, stack) => Text('$err'),
+                    // loading: () => Container(),
+                    // )                            

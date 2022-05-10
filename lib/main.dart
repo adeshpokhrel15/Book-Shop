@@ -1,3 +1,4 @@
+import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/screens/statusCheck.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

@@ -4,20 +4,12 @@ import 'package:flutter/material.dart';
 enum SinginCharacter { fill, outline }
 
 class detailProduct extends StatefulWidget {
-  final String productName;
-  final String productImage;
-  final int productPrice;
-
-  detailProduct(
-      {required this.productImage,
-      required this.productName,
-      required this.productPrice});
-
   @override
   State<detailProduct> createState() => _detailProductState();
 }
 
 class _detailProductState extends State<detailProduct> {
+  late int count = 0;
   SinginCharacter _character = SinginCharacter.fill;
 
   Widget NavigatorBar({
@@ -109,7 +101,7 @@ class _detailProductState extends State<detailProduct> {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text(widget.productName),
+                    title: Text('hello'),
                     subtitle: Text("10"),
                   ),
                   Container(
@@ -157,13 +149,6 @@ class _detailProductState extends State<detailProduct> {
                           ],
                         ),
                         Text("100"),
-                        // Count(
-                        //   productId: widget.productId,
-                        //   productImage: widget.productImage,
-                        //   productName: widget.productName,
-                        //   productPrice: widget.productPrice,
-                        //   productUnit: '500 Gram',
-                        // ),
                         Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 30,

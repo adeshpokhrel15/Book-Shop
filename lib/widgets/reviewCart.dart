@@ -1,5 +1,7 @@
+import 'package:bookshop/providers/productProvider.dart';
 import 'package:bookshop/widgets/searchItem.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class reviewCart extends StatelessWidget {
   late int count = 0;
@@ -20,7 +22,6 @@ class reviewCart extends StatelessWidget {
             ),
             searchItem(
               isbool: true,
-            
             ),
             SizedBox(
               height: 10,

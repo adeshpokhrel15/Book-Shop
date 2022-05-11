@@ -1,4 +1,3 @@
-import 'package:bookshop/providers/authProvider.dart';
 import 'package:bookshop/providers/productProvider.dart';
 import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/widgets/drawerWidgets.dart';
@@ -8,21 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class mainScreen extends StatefulWidget {
-  @override
-  State<mainScreen> createState() => _mainScreenState();
-}
-
-class _mainScreenState extends State<mainScreen> {
-  late int count = 0;
+class mainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
         final product = ref.watch(postStream);
-
         return Scaffold(
-            backgroundColor: Colors.grey,
             drawer: drawerWidgets(),
             appBar: AppBar(
               iconTheme: IconThemeData(color: Colors.black),
@@ -69,9 +60,9 @@ class _mainScreenState extends State<mainScreen> {
               ],
             ),
             body: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: ListView(
-                children: [
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Column(children: [
                   Container(
                     height: 150,
                     decoration: BoxDecoration(
@@ -120,176 +111,80 @@ class _mainScreenState extends State<mainScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.red),
                           ),
-                          Text(
-                            'See All',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red),
+                          InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'See All',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            ),
                           ),
                         ],
                       )),
-                  Column(children: [
-                    product.when(
-                      data: (data) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => detailProduct()));
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(top: 10),
-                            height: 250,
+                  SizedBox(height: 30),
+                  SafeArea(
+                    child: Container(
+                      height: 520,
+                      child: product.when(
+                        data: (data) {
+                          return Container(
                             child: ListView.builder(
-                                itemCount: 7,
-                                scrollDirection: Axis.horizontal,
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemCount: data.length,
                                 itemBuilder: (context, index) {
-                                  return Container(
-                                    margin: EdgeInsets.symmetric(
-                                      horizontal: 5,
-                                    ),
-                                    height: 240,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            flex: 1,
-                                            child: Image.network(
-                                                data[index].productImage),
-                                          ),
-                                          Expanded(
-                                              child: Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8,
-                                                      vertical: 8),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(data[index].productName,
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.black)),
-                                                  Text('10', //price
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey)),
-                                                  Row(children: [
-                                                    Expanded(
-                                                      child: Container(
-                                                        height: 30,
-                                                        width: 50,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.yellow,
-                                                          border: Border.all(
-                                                            color: Colors.white,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6),
-                                                        ),
-                                                        child: Row(
-                                                          children: [
-                                                            Expanded(
-                                                                child: Center(
-                                                              child: Text(
-                                                                '$count book',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        10),
-                                                              ),
-                                                            )),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Expanded(
-                                                        child: Container(
-                                                      height: 30,
-                                                      width: 50,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        border: Border.all(
-                                                          color: Colors.grey,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6),
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          InkWell(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                count--;
-                                                              });
-                                                            },
-                                                            child: Icon(
-                                                              Icons.remove,
-                                                              size: 15,
-                                                              color: Colors.red,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            '$count',
-                                                            style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          InkWell(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                count++;
-                                                              });
-                                                            },
-                                                            child: Icon(
-                                                              Icons.add,
-                                                              size: 15,
-                                                              color: Colors.red,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ))
-                                                  ])
-                                                ],
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => detailProduct(data[index]));
+                                    },
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 10),
+                                        height: 320,
+                                        width: double.infinity,
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            // mainAxisAlignment:
+                                            //     MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(data[index].productName,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black)),
+                                              Text(
+                                                  "Rs. " +
+                                                      "${data[index].productPrice}", //price
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.red)),
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                child: Image.network(
+                                                  data[index].productImage,
+                                                  fit: BoxFit.cover,
+                                                  width: double.infinity,
+                                                ),
                                               ),
-                                            ),
-                                          ))
-                                        ]),
+                                              SizedBox(height: 10),
+                                            ])),
                                   );
                                 }),
-                          ),
-                        );
-                      },
-                      error: (err, stack) => Text('$err'),
-                      loading: () => Container(),
+                          );
+                        },
+                        error: (err, stack) => Text('$err'),
+                        loading: () => Container(),
+                      ),
                     ),
-                  ]),
-                ],
-              ),
-            ));
+                  ),
+                ])));
       },
     );
   }

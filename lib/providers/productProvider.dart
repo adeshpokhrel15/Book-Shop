@@ -22,6 +22,7 @@ class ProductProvider {
         productImage: data['productImage'],
         productName: data['productName'],
         productPrice: data['productPrice'],
+        productDetails: data['productDetails'],
       );
     }).toList();
   }

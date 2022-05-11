@@ -1,4 +1,5 @@
 import 'package:bookshop/screens/detailsProduct.dart';
+import 'package:bookshop/screens/mainScreen.dart';
 import 'package:bookshop/screens/statusCheck.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: statusCheck(),
+      home: mainScreen(),
       // statusCheck(),
       debugShowCheckedModeBanner: false,
     );

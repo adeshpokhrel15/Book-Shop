@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+//final cartProvider = StateNotifierProvider<ReviewCartProvider, List<CartModel>>((ref) => ReviewCartProvider(ref: ref));
+
 final cartProvider =
     StreamProvider((ref) => FirebaseAuth.instance.authStateChanges());
 final cartStream =

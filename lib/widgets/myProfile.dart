@@ -33,7 +33,7 @@ class myProfile extends StatelessWidget {
               "My Profile",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.grey,
+                color: Colors.white,
               ),
             ),
           ),

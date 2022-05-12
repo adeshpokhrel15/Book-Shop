@@ -10,7 +10,7 @@ class detailProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.orange,
         body: SafeArea(
           child: Stack(
             children: [
@@ -25,7 +25,7 @@ class detailProduct extends StatelessWidget {
                 ),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 70, horizontal: 20),
+                      const EdgeInsets.symmetric(vertical: 160, horizontal: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -37,10 +37,10 @@ class detailProduct extends StatelessWidget {
                       Consumer(builder: (context, ref, child) {
                         return Container(
                           width: double.infinity,
-                          height: 45,
+                          height: 50,
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: Colors.black,
+                                  primary: Colors.orange,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20))),
                               onPressed: () {},
@@ -96,7 +96,7 @@ class detailProduct extends StatelessWidget {
                   children: [
                     Text(
                       product.productName,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                     SizedBox(
                       height: 15,
@@ -110,7 +110,7 @@ class detailProduct extends StatelessWidget {
                             Text(
                               'Price',
                               style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
+                                  TextStyle(fontSize: 20, color: Colors.white),
                             ),
                             SizedBox(
                               height: 10,
@@ -118,7 +118,7 @@ class detailProduct extends StatelessWidget {
                             Text(
                               'Rs. ${product.productPrice}',
                               style:
-                                  TextStyle(fontSize: 17, color: Colors.white),
+                                  TextStyle(fontSize: 25, color: Colors.white),
                             ),
                           ],
                         ),

@@ -28,24 +28,24 @@ class reviewCart extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              searchItem(
-                isbool: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              searchItem(
-                isbool: true,
-              ),
-              searchItem(
-                isbool: true,
-              ),
-              searchItem(
-                isbool: true,
-              ),
-              SizedBox(
-                height: 10,
-              )
+              searchItem()
+              //isbool: true,
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              // searchItem(
+              //   isbool: true,
+              // ),
+              // searchItem(
+              //   isbool: true,
+              // ),
+              // searchItem(
+              //   isbool: true,
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // )
             ],
           ),
           bottomNavigationBar: ListTile(

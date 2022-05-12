@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:bookshop/providers/productProvider.dart';
 import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/widgets/drawerWidgets.dart';
@@ -25,35 +26,25 @@ class mainScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               actions: [
-                CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Color(0xffd6d382),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => searchWidget()));
-                    },
-                    icon: Icon(
-                      Icons.search,
-                      size: 17,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => reviewCart(),
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.yellow,
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => reviewCart());
+                      },
+                      child: Center(
+                        child: Badge(
+                          badgeContent: Text(
+                            '0',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          animationDuration: Duration(milliseconds: 300),
+                          child: Icon(Icons.shopping_bag_outlined),
                         ),
-                      );
-                    },
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffd6d382),
-                      radius: 15,
-                      child: Icon(Icons.shop, size: 17, color: Colors.black),
+                      ),
                     ),
                   ),
                 ),

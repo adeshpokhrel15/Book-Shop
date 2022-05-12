@@ -18,6 +18,7 @@ class ReviewCartProvider {
     required String cartImage,
     required int cartPrice,
     required int cartQuantity,
+    required String totalPrice,
   }) async {
     try {
       final response =
@@ -26,6 +27,7 @@ class ReviewCartProvider {
         'cartImage': cartImage,
         'cartPrice': cartPrice,
         'cartQuantity': cartQuantity,
+        'totalPrice': totalPrice,
       });
       return 'success';
     } on FirebaseException catch (e) {
@@ -47,6 +49,7 @@ class ReviewCartProvider {
         cartImage: data['cartImage'],
         cartPrice: data['cartPrice'],
         cartQuantity: data['cartQuantity'],
+        totalPrice: data['totalPrice'],
       );
     }).toList();
   }

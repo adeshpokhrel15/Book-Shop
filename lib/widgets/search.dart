@@ -44,18 +44,18 @@ class searchWidget extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        searchItem(
-          isbool: false,
-        ),
-        searchItem(
-          isbool: false,
-        ),
-        searchItem(
-          isbool: false,
-        ),
-        searchItem(
-          isbool: false,
-        ),
+        // searchItem(
+        //   isbool: false,
+        // ),
+        // searchItem(
+        //   isbool: false,
+        // ),
+        // searchItem(
+        //   isbool: false,
+        // ),
+        // searchItem(
+        //   isbool: false,
+        // ),
       ]),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:bookshop/providers/authProvider.dart';
 import 'package:bookshop/providers/userProvider.dart';
 import 'package:bookshop/widgets/myProfile.dart';
-import 'package:bookshop/widgets/reviewCart.dart';
+import 'package:bookshop/widgets/cartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -112,7 +112,7 @@ class drawerWidgets extends StatelessWidget {
                     title: Text('Review Cart'),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => reviewCart()));
+                          builder: (context) => cartScreen()));
                     },
                   ),
                   ListTile(

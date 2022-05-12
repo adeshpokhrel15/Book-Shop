@@ -21,8 +21,7 @@ class ReviewCartProvider {
     required String totalPrice,
   }) async {
     try {
-      final response =
-          await FirebaseFirestore.instance.collection('users').add({
+      final response = await dbCart.add({
         'cartId': cartId,
         'cartImage': cartImage,
         'cartPrice': cartPrice,

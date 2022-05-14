@@ -1,7 +1,9 @@
 import 'package:bookshop/models/productModel.dart';
 import 'package:bookshop/providers/cartProvider.dart';
+import 'package:bookshop/widgets/cartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 class detailProduct extends StatelessWidget {
   final ProductModel product;
@@ -48,6 +50,7 @@ class detailProduct extends StatelessWidget {
                                             BorderRadius.circular(20))),
                                 onPressed: () {
                                   // ref.read(cartProvider.notifier).addToCart(''));
+                                  Get.to(() => cartScreen());
                                 },
                                 //   final response = ref
                                 //       .read(cartProvider.notifier)

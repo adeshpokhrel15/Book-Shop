@@ -11,7 +11,8 @@ final cartStream =
 
 class CartProvider extends StateNotifier<List<CartModel>> {
   CartProvider() : super([]);
-  CollectionReference dbCart = FirebaseFirestore.instance.collection('users');
+  // CollectionReference dbCart = FirebaseFirestore.instance.collection('users');
+  CollectionReference dbCart = FirebaseFirestore.instance.collection('cart');
 
   Future<dynamic> addToCart(
     String cartId,
@@ -21,7 +22,7 @@ class CartProvider extends StateNotifier<List<CartModel>> {
   ) async {
     try {
       final response = await dbCart.add({
-        'cartId': cartId,
+        'cartId': null,
         'cartPrice': cartPrice,
         'cartQuantity': cartQuantity,
         'totalPrice': totalPrice,
@@ -49,10 +50,13 @@ class CartProvider extends StateNotifier<List<CartModel>> {
     return querySnapshot.docs.map((e) {
       final data = e.data() as Map<String, dynamic>;
       return CartModel(
-        cartId: data['cartId'],
+        // cartId: data['cartId'],
+        cartId: e.id,
         cartPrice: data['cartPrice'],
         cartQuantity: data['cartQuantity'],
-        totalPrice: data['totalPrice'],
+        // totalPrice: data['totalPrice'],
+        totalPrice: data['cartPrice'] * data['cartQuantity'],
+        productId: data['productId'] ?? 'temporary',
       );
     }).toList();
   }

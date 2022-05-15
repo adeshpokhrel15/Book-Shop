@@ -22,3 +22,23 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(ProviderScope(child: Home()));
+// }
+
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return GetMaterialApp(
+//       home: mainScreen(),
+//       // statusCheck(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }

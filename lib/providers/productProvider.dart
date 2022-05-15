@@ -19,6 +19,7 @@ class ProductProvider {
     return querySnapshot.docs.map((e) {
       final data = e.data() as Map<String, dynamic>;
       return ProductModel(
+        productId: data['productId'] ?? null,
         productImage: data['productImage'],
         productName: data['productName'],
         productPrice: data['productPrice'],

@@ -14,7 +14,7 @@ class statusCheck extends StatelessWidget {
         return auth.when(
             data: (data) {
               if (data == null) {
-                return authScreen();
+                return AuthScreen();
               } else {
                 return mainScreen();
               }

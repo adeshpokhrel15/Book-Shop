@@ -15,11 +15,28 @@ class ProductProvider {
     return data;
   }
 
+  Future<ProductModel> getProductFromId(String id) async {
+    final data = await dbPosts.doc(id).get();
+    return _getProductFromSnap(data);
+  }
+
+  ProductModel _getProductFromSnap(DocumentSnapshot documentSnapshot) {
+    final data = documentSnapshot.data() as Map<String, dynamic>;
+    return ProductModel(
+      productId: documentSnapshot.id,
+      productName: data['productName'],
+      productPrice: data['productPrice'],
+      productDetails: data['productDetails'],
+      productImage: data['productImage'],
+    );
+  }
+
   List<ProductModel> _getFromSnap(QuerySnapshot querySnapshot) {
     return querySnapshot.docs.map((e) {
       final data = e.data() as Map<String, dynamic>;
       return ProductModel(
-        productId: data['productId'] ?? null,
+        // productId: data['productId'] ?? null,
+        productId: e.id,
         productImage: data['productImage'],
         productName: data['productName'],
         productPrice: data['productPrice'],

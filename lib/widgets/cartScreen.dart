@@ -1,5 +1,6 @@
 import 'package:bookshop/models/cartModel.dart';
 import 'package:bookshop/providers/cartProvider.dart';
+import 'package:bookshop/providers/productProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,7 +61,8 @@ class _cartScreenState extends State<cartScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Center(
-                  child: Text("Error"),
+                  // child: Text("Error"),
+                  child: Text(snapshot.error.toString()),
                 );
               }
               if (snapshot.hasData) {
@@ -107,6 +109,12 @@ class CartItem extends StatefulWidget {
 }
 
 class _CartItemState extends State<CartItem> {
+
+  ProductProvider productProvider = ProductProvider();
+
+
+  productProvider;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -135,7 +143,9 @@ class _CartItemState extends State<CartItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Book 1',
+                            // 'Book 1',
+                            // widget.cartItem.cartId,
+                            widget.cartItem.productId,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,

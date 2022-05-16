@@ -26,7 +26,7 @@ class myProfile extends StatelessWidget {
         final profile = ref.watch(userStream);
 
         return Scaffold(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.orange,
           appBar: AppBar(
             elevation: 0.0,
             title: Text(
@@ -44,14 +44,14 @@ class myProfile extends StatelessWidget {
                 children: [
                   Container(
                     height: 100,
-                    color: Colors.grey,
+                    color: Colors.orange,
                   ),
                   Container(
                     height: 548,
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),

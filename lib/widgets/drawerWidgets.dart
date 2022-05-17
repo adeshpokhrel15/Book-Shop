@@ -47,7 +47,8 @@ class drawerWidgets extends StatelessWidget {
                             backgroundColor: Colors.white54,
                             child: CircleAvatar(
                               backgroundColor: Colors.yellow,
-                              backgroundImage: AssetImage('assets/book1.jpg'),
+                              backgroundImage: NetworkImage(
+                                  'https://th.bing.com/th/id/OIP.W2xIbYmLZhyVqZRp_dATDwAAAA?pid=ImgDet&w=300&h=284&rs=1'),
                               radius: 40,
                             ),
                           ),

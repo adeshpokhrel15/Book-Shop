@@ -14,7 +14,7 @@ class _cartScreenState extends State<cartScreen> {
 
   bool isBool = false;
 
-  int totalPrice = 1;
+  int totalPrice = 0;
 
   _increaseTotal(count) {
     // setState(() {
@@ -26,6 +26,7 @@ class _cartScreenState extends State<cartScreen> {
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
       final cart = ref.watch(cartProvider.notifier);
+      final product = ref.watch(postStream);
       return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -40,12 +41,10 @@ class _cartScreenState extends State<cartScreen> {
             title: Text(
               'Total:',
             ),
-            // subtitle: Text('\$100'),
-            subtitle: Text(' $totalPrice'),
+            subtitle: Text('Rs' + ' $totalPrice'),
             trailing: Container(
               width: 100,
               child: MaterialButton(
-                child: Text("Submit"),
                 color: Colors.orange,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
@@ -126,7 +125,9 @@ class _CartItemState extends State<CartItem> {
                   height: 90,
                   child: Center(
                     child: Image.network(
-                      'https://th.bing.com/th/id/R.2e7380de4d19ec24c828305492c972d1?rik=hPwROiiaELF9Aw&pid=ImgRaw&r=0',
+                      widget.cartItem.cartImage,
+
+                      ///                      'https://th.bing.com/th/id/OIP.oY2WG85YmIRoDoMvUrkCJgHaEO?pid=ImgDet&rs=1',
                     ),
                   ),
                 ),
@@ -143,14 +144,15 @@ class _CartItemState extends State<CartItem> {
                           Text(
                             // 'Book 1',
                             // widget.cartItem.cartId,
-                            widget.cartItem.productId,
+                            widget.cartItem.cartName,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),
                           Text(
-                            "Rs. 100",
+                            '${widget.cartItem.cartPrice}',
+                            //   "Rs. 100",
                             style: TextStyle(
                                 color: Colors.green,
                                 fontWeight: FontWeight.bold),
@@ -170,7 +172,9 @@ class _CartItemState extends State<CartItem> {
                     child: Column(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () async {
+// await  ref.removePost(cartImage: widget.cartItem.cartImage);
+                          },
                           child: Icon(
                             Icons.delete,
                             size: 30,

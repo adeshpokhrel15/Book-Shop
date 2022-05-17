@@ -1,6 +1,7 @@
 import 'package:bookshop/models/cartModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,6 +20,8 @@ class CartProvider extends StateNotifier<List<CartModel>> {
     int cartPrice,
     int cartQuantity,
     String totalPrice,
+    String cartName,
+    String cartImage,
   ) async {
     try {
       final response = await dbCart.add({
@@ -26,6 +29,8 @@ class CartProvider extends StateNotifier<List<CartModel>> {
         'cartPrice': cartPrice,
         'cartQuantity': cartQuantity,
         'totalPrice': totalPrice,
+        'cartName': cartName,
+        'cartImage': cartImage,
       });
       return 'success';
     } on FirebaseException catch (e) {
@@ -40,11 +45,41 @@ class CartProvider extends StateNotifier<List<CartModel>> {
     state.add(cartItem);
   }
 
+  Future<String> removePost({required String cartImage}) async {
+    try {
+      final ref = FirebaseStorage.instance.ref().child('cart/$cartImage');
+      await ref.delete();
+
+      return 'success';
+    } on FirebaseException catch (err) {
+      print(err);
+      return '';
+    }
+  }
+
   Stream<List<CartModel>> getCartData() {
     final data = dbCart.snapshots().map((event) => _getFromSnap(event));
 
     return data;
   }
+
+  // Future<CartModel> getCart(String id) async {
+  //   final data = await dbCart.doc(id).get();
+  //   return _getProduct(data);
+  // }
+
+  // CartModel _getProduct(DocumentSnapshot documentSnapshot) {
+  //   final data = documentSnapshot.data() as Map<String, dynamic>;
+  //   return CartModel(
+  //     cartId: documentSnapshot.id,
+  //     cartPrice: data['cartPrice'],
+  //     cartQuantity: data['cartQuantity'],
+  //     // totalPrice: data['totalPrice'],
+  //     totalPrice: data['cartPrice'],
+  //     productId: data['productId'],
+  //     cartName: data["cartName"],
+  //   );
+  // }
 
   List<CartModel> _getFromSnap(QuerySnapshot querySnapshot) {
     return querySnapshot.docs.map((e) {
@@ -54,9 +89,11 @@ class CartProvider extends StateNotifier<List<CartModel>> {
         cartId: e.id,
         cartPrice: data['cartPrice'],
         cartQuantity: data['cartQuantity'],
-        // totalPrice: data['totalPrice'],
+        //totalPrice: data['totalPrice'],
         totalPrice: data['cartPrice'] * data['cartQuantity'],
         productId: data['productId'] ?? 'temporary',
+        cartName: data["cartName"] ?? "",
+        cartImage: data["cartImage"] ?? "",
       );
     }).toList();
   }

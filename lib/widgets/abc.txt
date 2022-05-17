@@ -1,0 +1,33 @@
+Future<CartModel> getCart(String id) async {
+    final data = await dbCart.doc(id).get();
+    return _getProduct(data);
+  }
+
+  CartModel _getProduct(DocumentSnapshot documentSnapshot) {
+    final data = documentSnapshot.data() as Map<String, dynamic>;
+    return CartModel(
+      cartId: documentSnapshot.id,
+      cartPrice: data['cartPrice'],
+      cartQuantity: data['cartQuantity'],
+      // totalPrice: data['totalPrice'],
+      totalPrice: data['cartPrice'],
+      productId: data['productId'],
+      cartName: data["cartName"],
+    );
+  }
+
+
+Scaffold(
+          body: Container(
+        child: cart.when(
+          data: (data) {
+            return Container(
+                child: ListView.builder(itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(),
+              );
+            }));
+          },
+          error: (err, stack) => Text('$err'),
+          loading: () => Container(),
+        ),

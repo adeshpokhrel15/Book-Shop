@@ -15,6 +15,8 @@ class CartProvider extends StateNotifier<List<CartModel>> {
   // CollectionReference dbCart = FirebaseFirestore.instance.collection('users');
   CollectionReference dbCart = FirebaseFirestore.instance.collection('cart');
 
+  CollectionReference dbOrder = FirebaseFirestore.instance.collection('orders');
+
   Future<dynamic> addToCart(
     String cartId,
     int cartPrice,
@@ -31,6 +33,19 @@ class CartProvider extends StateNotifier<List<CartModel>> {
         'totalPrice': totalPrice,
         'cartName': cartName,
         'cartImage': cartImage,
+      });
+      return 'success';
+    } on FirebaseException catch (e) {
+      print(e);
+      return '';
+    }
+  }
+
+  Future<dynamic> addOrder(List<String> productNames, int totalPrice) async {
+    try {
+      final response = await dbOrder.add({
+        'totalPrice': totalPrice,
+        'bookNames': productNames,
       });
       return 'success';
     } on FirebaseException catch (e) {

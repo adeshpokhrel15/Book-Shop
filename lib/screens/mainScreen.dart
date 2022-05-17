@@ -3,7 +3,6 @@ import 'package:bookshop/providers/productProvider.dart';
 import 'package:bookshop/screens/detailsProduct.dart';
 import 'package:bookshop/widgets/drawerWidgets.dart';
 import 'package:bookshop/widgets/cartScreen.dart';
-import 'package:bookshop/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
@@ -136,8 +135,6 @@ class mainScreen extends StatelessWidget {
                                           child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              // mainAxisAlignment:
-                                              //     MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(data[index].productName,
                                                     style: TextStyle(

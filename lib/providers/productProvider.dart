@@ -4,18 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final postProvider =
     StreamProvider.autoDispose((ref) => ProductProvider().getData());
-// final postProviderCart = FutureProvider<ProductProvider>(
-//     (ref, id) async => ProductProvider().getProductFromId(id));
 
 final postStream =
     StreamProvider.autoDispose((ref) => ProductProvider().getData());
 
-// final singleProduct = StreamProvider((ref) => ProductProvider().getProductFromId());
-
 class ProductProvider {
   CollectionReference dbPosts = FirebaseFirestore.instance.collection('books');
-
-  // ProductProvider() : super(0);
 
   Stream<List<ProductModel>> getData() {
     final data = dbPosts.snapshots().map((event) => _getFromSnap(event));
@@ -43,7 +37,6 @@ class ProductProvider {
     return querySnapshot.docs.map((e) {
       final data = e.data() as Map<String, dynamic>;
       return ProductModel(
-        // productId: data['productId'] ?? null,
         productId: e.id,
         productImage: data['productImage'],
         productName: data['productName'],

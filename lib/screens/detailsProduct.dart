@@ -52,9 +52,6 @@ class detailProduct extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    // ref.read(cartProvider.notifier).addToCart(''));
-
-                                    // Add the item to cart
                                     ref.read(cartProvider.notifier).addToCart(
                                           "temp",
                                           product.productPrice,
@@ -66,41 +63,6 @@ class detailProduct extends StatelessWidget {
 
                                     Get.to(() => cartScreen());
                                   },
-                                  // final response = ref
-                                  //     .read(cartProvider.notifier)
-                                  //     .addProduct(product);
-                                  // if (response == 'success') {
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .hideCurrentSnackBar();
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .showSnackBar(SnackBar(
-                                  //     duration: Duration(milliseconds: 1500),
-                                  //     content: Text('successfully added to cart'),
-                                  //     action: SnackBarAction(
-                                  //         label: 'Go to cart',
-                                  //         onPressed: () {
-                                  //           Get.to(() => CartScreen(),
-                                  //               transition:
-                                  //                   Transition.leftToRight);
-                                  //         }),
-                                  //   ));
-                                  // } else {
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .hideCurrentSnackBar();
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .showSnackBar(SnackBar(
-                                  //     duration: Duration(milliseconds: 1500),
-                                  //     content: Text('already added to cart'),
-                                  //     action: SnackBarAction(
-                                  //         label: 'Go to cart',
-                                  //         onPressed: () {
-                                  //           Get.to(() => CartScreen(),
-                                  //               transition:
-                                  //                   Transition.leftToRight);
-                                  //         }),
-                                  //   ));
-                                  // }
-                                  // },
                                   child: Text(
                                     'Add to Cart',
                                     style: TextStyle(fontSize: 17),

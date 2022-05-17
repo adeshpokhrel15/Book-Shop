@@ -1,6 +1,5 @@
 import 'package:bookshop/screens/mainScreen.dart';
 import 'package:bookshop/screens/statusCheck.dart';
-import 'package:bookshop/widgets/cartScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +16,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: statusCheck(),
+      //     home: mainScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

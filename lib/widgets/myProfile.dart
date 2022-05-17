@@ -88,7 +88,7 @@ class myProfile extends StatelessWidget {
                                                 Text(data.email,
                                                     style: TextStyle(
                                                         color: Colors.black,
-                                                        fontSize: 18)),
+                                                        fontSize: 15)),
                                               ],
                                             );
                                           },

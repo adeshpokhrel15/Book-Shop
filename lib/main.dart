@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: statusCheck(),
+      home: mainScreen(),
       //     home: mainScreen(),
       debugShowCheckedModeBanner: false,
     );

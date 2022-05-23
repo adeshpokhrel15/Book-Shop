@@ -16,4 +16,4 @@
 ### 2. Architecture
 #### - <a href = 'https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter'> MVP </a>
 
-### 3. < a href = 'https://firebase.google.com/' > FireBase </a>
+### 3. <a href = 'https://firebase.google.com/'> FireBase </a>
